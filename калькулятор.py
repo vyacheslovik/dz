@@ -30,7 +30,7 @@ while True:
             first = float(first)
         except:
             print('Пока:)')
-            exit
+            break
             
     print('Введите второе число')
     try:
@@ -43,7 +43,7 @@ while True:
             second = float(second)
         except:
             print('Пока:)')
-            exit
+            break
             
     ### РАБОТА С ЧИСЛАМИ        
     if func == 'Сложение':
@@ -96,79 +96,103 @@ while True:
 
     if func == 'округление в большую сторону':
         print('С каким числом работаем?(1,2)')
-        number = int(input())
+        try:
+            number = int(input())
+        except:
+            number = 's'
         while number not in (1,2):
             print('Введите 1 или 2!!')
-            number = int(input())
+            try:
+                number = int(input())
+            except:
+                continue
         print('Введите число N до какой цифры после запятой нужно округлить')
-        N = int(input())
+        try:
+            N = int(input())
+        except:
+            N = 's'
         while type(N) != type(5):
             print('Введите корректное число!')
-            N = int(input())
+            try:
+                N = int(input())
+            except:
+                continue
         if number == 1:
-            while N > len(str(first)):
+            while N+2 > len(str(first)):
                 print('Введите допустимое значение!')
                 N = int(input())
             if int(str(first)[N+1]) != 9:
                 print(str(first)[:N+1] + str(int(str(first)[N+1]) + 1))
-                results.append(str(first)[:N+1] + str(int(str(first)[N+1]) + 1))
+                results.append(float(str(first)[:N+1] + str(int(str(first)[N+1]) + 1)))
             elif N == 1:
                 print(int(first) + 1)
                 results.append(int(first) + 1)
             else:
                 print(str(first)[:N] + str(int(str(first)[N]) + 1))
-                results.append(str(first)[:N] + str(int(str(first)[N]) + 1))
+                results.append(float(str(first)[:N] + str(int(str(first)[N]) + 1)))
         else:
-            while N > len(str(second)):
+            while N+2 > len(str(second)):
                 print('Введите допустимое значение!')
                 N = int(input())
             if int(str(second)[N+1]) != 9:
                 print(str(second)[:N+1] + str(int(str(second)[N+1]) + 1))
-                results.append(str(second)[:N+1] + str(int(str(second)[N+1]) + 1))
+                results.append(float(str(second)[:N+1] + str(int(str(second)[N+1]) + 1)))
             elif N == 1:
                 print(int(second) + 1)
                 results.append(int(second) + 1)
             else:
                 print(str(second)[:N] + str(int(str(second)[N]) + 1))
-                results.append(str(second)[:N] + str(int(str(second)[N]) + 1))
+                results.append(float(str(second)[:N] + str(int(str(second)[N]) + 1)))
 
     if func == 'округление в меньшую сторону':
         print('С каким числом работаем?(1,2)')
-        number = int(input())
+        try:
+            number = int(input())
+        except:
+            number = 's'
         while number not in (1,2):
             print('Введите 1 или 2!!')
-            number = int(input())
+            try:
+                number = int(input())
+            except:
+                continue
         print('Введите число N до какой цифры после запятой нужно округлить')
-        N = int(input())
+        try:
+            N = int(input())
+        except:
+            N = 's'
         while type(N) != type(5):
             print('Введите корректное число!')
-            N = int(input())
+            try:
+                N = int(input())
+            except:
+                continue
         if number == 1:
-            while N > len(str(first)):
+            while N+2 > len(str(first)):
                 print('Введите допустимое значение!')
                 N = int(input())
             if int(str(first)[N+1]) not in (0,1):
                 print(str(first)[:N+1] + str(int(str(first)[N+1])))
-                results.append(str(first)[:N+1] + str(int(str(first)[N+1])))
+                results.append(float(str(first)[:N+1] + str(int(str(first)[N+1]))))
             elif N == 1:
                 print(int(first))
                 results.append(int(first))
             else:
                 print(str(first)[:N] + str(int(str(first)[N])))
-                results.append(str(first)[:N] + str(int(str(first)[N])))
+                results.append(float(str(first)[:N] + str(int(str(first)[N]))))
         else:
-            while N > len(str(second)):
+            while N+2 > len(str(second)):
                 print('Введите допустимое значение!')
                 N = int(input())
             if int(str(second)[N+1]) not in (0,1):
                 print(str(second)[:N+1] + str(int(str(second)[N+1])))
-                results.append(str(second)[:N+1] + str(int(str(second)[N+1])))
+                results.append(float(str(second)[:N+1] + str(int(str(second)[N+1]))))
             elif N == 1:
                 print(int(second))
                 results.append(int(second))
             else:
                 print(str(second)[:N] + str(int(str(second)[N])))
-                results.append(str(second)[:N] + str(int(str(second)[N])))
+                results.append(float(str(second)[:N] + str(int(str(second)[N]))))
     print('Вы желаете продолжить работу с калькулятором?')
     ans = str(input())
     if ans not in ('да','Да','дА','ДА'):
